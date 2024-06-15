@@ -45,11 +45,16 @@ translations = {
 language = st.sidebar.selectbox("Choose Language / Escolha o Idioma", ('en', 'pt'))
 trans = translations[language]
 
+# Dropdown options
+years_options = list(range(1, 21))  # Years from 1 to 20
+interest_rate_options = [i / 2 for i in range(0, 101)]  # Interest rates from 0% to 50% in 0.5% increments
+principal_options = [i * 5000000 for i in range(1, 21)]  # Principal amounts from 5M to 100M in 5M increments
+
 # Sidebar for user inputs
 st.sidebar.header(trans['title'])
-years = st.sidebar.number_input(trans['years'], min_value=1, value=7)
-interest_rate = st.sidebar.number_input(trans['interest_rate'], min_value=0.0, value=21.0)
-principal = st.sidebar.number_input(trans['principal'], min_value=0.0, value=50000000.0)
+years = st.sidebar.selectbox(trans['years'], years_options, index=6)
+interest_rate = st.sidebar.selectbox(trans['interest_rate'], interest_rate_options, index=42)
+principal = st.sidebar.selectbox(trans['principal'], principal_options, index=9)
 monthly_payment = 775000.0
 
 # Main app
