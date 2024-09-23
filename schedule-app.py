@@ -35,8 +35,7 @@ tokenizer, model = load_llm_model()
 
 # Load sentence transformer model
 @st.cache_resource
-def load_sentence_transformer():
-    try:
+def load_sentence_transformer    try:
         return SentenceTransformer('all-MiniLM-L6-v2')
     except Exception as e:
         st.error(f"Error loading the sentence transformer model: {str(e)}")
@@ -47,19 +46,27 @@ model_bert = load_sentence_transformer()
 # Create FAISS index for RAG
 @st.cache_resource
 def create_faiss_index(schedule: Dict[str, Any]) -> faiss.IndexFlatL2:
-    index = faiss.IndexFlatL2(768)  # 768 is the dimension of sentence embeddings
+    # Assuming model_bert.encode() returns a 768-dimensional vector, adjust if different
+    index = faiss.IndexFlatL2(768)
+    
     for pair, weeks in schedule.items():
         for week, days in weeks.items():
             for employee, day_list in days.items():
                 embedding = model_bert.encode(f"{pair} {week} {employee} {' '.join(day_list)}")
-                index.add(np.array([embedding]))
+                # Debug: Print shape to ensure it matches index dimension
+                print(f"Embedding shape for {employee}: {embedding.shape}")
+                if embedding.shape[0] == 768:
+                    index.add(np.array([embedding]))
+                else:
+                    st.error(f"Dimension mismatch for {employee}. Expected 768, got {embedding.shape[0]}")
+
     return index
 
 index = create_faiss_index(schedule)
 
 # Sidebar for pair and week selection
 pair = st.sidebar.selectbox("Select a Pair", list(schedule.keys()))
-week = st.sidebar.selectbox("Select Week", ["Week 1", "Week 2", "Week 3", "Week 4"])
+week = st.sidebar.selectbox(" Week", ["Week 1", "Week 2", "Week 3", "Week 4"])
 
 # Display selected schedule
 st.write(f"Schedule for {pair} in {week}:")
