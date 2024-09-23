@@ -106,5 +106,6 @@ if st.button("Ask"):
             response = query_schedule(user_input)
             st.write(response)
 
-    if __name__ == "__main__":
+if __name__ == "__main__":
+
 
