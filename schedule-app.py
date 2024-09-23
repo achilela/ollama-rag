@@ -6,6 +6,7 @@ from sentence_transformers import SentenceTransformer
 import faiss
 import numpy as np
 
+if __name__ == "__main__":
 st.set_page_config(page_title="Schedule Management App", page_icon="📅")
 
 # Load schedule
@@ -106,6 +107,7 @@ if st.button("Ask"):
             response = query_schedule(user_input)
             st.write(response)
 
-if __name__ == "__main__":
+
+    
 
 
