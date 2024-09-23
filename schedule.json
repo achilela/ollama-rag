@@ -1,0 +1,8 @@
+{
+  "Pair 1 (Ataliba Miguel & Anielde Gomes)": {
+    "Week 1": {"Ataliba": ["Tue",Wed", "Fri"], "Anielde": ["Tue", "Thu", "Fri"]},
+    "Week 2": {"Ataliba": ["Wed", "Thu", "Fri"], "Anielde": ["Tue", "Thu", "Fri"]},
+    "Week 3": {"Ataliba": ["Tue", "Wed", "Fri"], "Anielde": ["Wed", "Thu", "Fri"]},
+    "Week 4": {"Ataliba": ["Tue", "Thu", "Fri"], "Anielde": ["Wed", "Thu", "Fri"]}
+  }
+}
