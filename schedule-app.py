@@ -7,7 +7,7 @@ import faiss
 import numpy as np
 
 if __name__ == "__main__":
-st.set_page_config(page_title="Schedule Management App", page_icon="📅")
+    st.set_page_config(page_title="Schedule Management App", page_icon="📅")
 
 # Load schedule
 def load_schedule() -> Dict[str, Any]:
