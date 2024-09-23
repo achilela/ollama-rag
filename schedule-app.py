@@ -96,7 +96,7 @@ def query_schedule(user_input: str) -> str:
     # Use LLM for generating response
     prompt = f"Context:\n{context}\n\nQuestion: {user_input}\nAnswer:"
     inputs = tokenizer.encode(prompt, return_tensors='pt')
-    outputs = model.generate(inputs, max_length=150, do_sample=True, top_p=0.95)
+    outputs = model.generate(inputs, max_length=500, do_sample=True, top_p=0.95)
     response = tokenizer.decode(outputs[0], skip_special_tokens=True)
     
     return response
