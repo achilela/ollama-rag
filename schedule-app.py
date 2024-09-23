@@ -48,7 +48,7 @@ model_bert = load_sentence_transformer()
 @st.cache_resource
 def create_faiss_index(schedule: Dict[str, Any]) -> faiss.IndexFlatL2:
     # Assuming model_bert.encode() returns a 768-dimensional vector, adjust if different
-    index = faiss.IndexFlatL2(768)
+    index = faiss.IndexFlatL2(384)
     
     for pair, weeks in schedule.items():
         for week, days in weeks.items():
@@ -56,7 +56,7 @@ def create_faiss_index(schedule: Dict[str, Any]) -> faiss.IndexFlatL2:
                 embedding = model_bert.encode(f"{pair} {week} {employee} {' '.join(day_list)}")
                 # Debug: Print shape to ensure it matches index dimension
                 print(f"Embedding shape for {employee}: {embedding.shape}")
-                if embedding.shape[0] == 768:
+                if embedding.shape[0] == 384:
                     index.add(np.array([embedding]))
                 else:
                     st.error(f"Dimension mismatch for {employee}. Expected 768, got {embedding.shape[0]}")
