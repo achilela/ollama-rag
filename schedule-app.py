@@ -6,6 +6,8 @@ from sentence_transformers import SentenceTransformer
 import faiss
 import numpy as np
 
+st.set_page_config(page_title="Schedule Management App", page_icon="📅")
+
 # Load schedule
 def load_schedule() -> Dict[str, Any]:
     try:
@@ -105,4 +107,4 @@ if st.button("Ask"):
             st.write(response)
 
 if __name__ == "__main__":
-    st.set_page_config(page_title="Schedule Management App", page_icon="📅")
+
