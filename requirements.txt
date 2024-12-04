@@ -3,3 +3,8 @@ transformers
 torch
 faiss-cpu
 sentence-transformers
+langchain 
+langchain_community 
+streamlit_chat 
+chromadb 
+pypdf
